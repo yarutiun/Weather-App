@@ -11,8 +11,8 @@ import wind_icon from "../Assets/wind.png"
 import { useState } from "react";
 
 const WeatherApp = () => {
-    let apiKey = "b164a749f0e61356a4b1dbc4535d92d7";
     const [wicon, setWicon] = useState(cloud_icon);
+    let apiKey = "b164a749f0e61356a4b1dbc4535d92d7";
     const Search = async () =>
     {
         const element = document.getElementsByClassName("cityInput");
@@ -73,8 +73,10 @@ const WeatherApp = () => {
             Search();
         }
     };
+    const currentTime = new Date();
     return(
         <div className="container">
+            <div className="time">{currentTime.getHours()}:{currentTime.getMinutes()}</div>
             <div className="top-bar">
                 <input onKeyDown={handleKeyDown}type="text" className="cityInput" placeholder="search"/>
                 <div className="search-icon"  onClick={() => {Search()}}>

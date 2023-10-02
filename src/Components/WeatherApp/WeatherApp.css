@@ -89,3 +89,13 @@
 .icon {
     margin-top: 10px;
 }
+
+.time {
+    color: rgb(115, 113, 211);
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    font-size: 30px;
+    /* margin-bottom: 40px;    */
+    /* padding-bottom: 80px; */
+}
