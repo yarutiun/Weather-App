@@ -66,11 +66,18 @@ const WeatherApp = () => {
             setWicon(clear_icon);
         }
     }
+    const handleKeyDown = (event) => {
+        // Check if the "Shift" key is pressed (key code 16)
+        if (event.keyCode === 13) {
+          // Trigger the search function when "Shift" key is pressed
+            Search();
+        }
+    };
     return(
         <div className="container">
             <div className="top-bar">
-                <input type="text" className="cityInput" placeholder="search"/>
-                <div className="search-icon" onClick={() => {Search()}}>
+                <input onKeyDown={handleKeyDown}type="text" className="cityInput" placeholder="search"/>
+                <div className="search-icon"  onClick={() => {Search()}}>
                     <img src={search_icon} alt="search-icon" />
                 </div>
             </div>
