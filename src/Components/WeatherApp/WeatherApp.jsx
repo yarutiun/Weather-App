@@ -23,7 +23,7 @@ const WeatherApp = () => {
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&id=2172797&appid=${apiKey}`;
         let response = await fetch(url);
         if(response.status === 404)
-            return(0);
+        return(0);
         let data = await response.json();
         const humidity = document.getElementsByClassName("humidity-percent");
         const wind = document.getElementsByClassName("wind-rate");
@@ -69,14 +69,18 @@ const WeatherApp = () => {
     const handleKeyDown = (event) => {
         // Check if the "Shift" key is pressed (key code 16)
         if (event.keyCode === 13) {
-          // Trigger the search function when "Shift" key is pressed
+            // Trigger the search function when "Shift" key is pressed
             Search();
         }
     };
     const currentTime = new Date();
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+    const formattedMinutes = (minutes < 10) ? `0${minutes}` : minutes;
+    const formattedTime = `${hours}:${formattedMinutes}`;
     return(
         <div className="container">
-            <div className="time">{currentTime.getHours()}:{currentTime.getMinutes()}</div>
+            <div className="time">{formattedTime}</div>
             <div className="top-bar">
                 <input onKeyDown={handleKeyDown}type="text" className="cityInput" placeholder="search"/>
                 <div className="search-icon"  onClick={() => {Search()}}>
